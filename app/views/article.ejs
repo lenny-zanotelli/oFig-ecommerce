@@ -26,7 +26,8 @@
                   <%= figurine.description%>
                 </p>
                 <p class="card-text">3
-                  Note moyenne : &#9733; &#9733; &#9733; &#9733; &#9734;
+                  Note moyenne : 
+                  &#9733; &#9733; &#9733; &#9733; &#9734;
                   <br>
                   <a href="#" data-toggle="modal" data-target="#reviewsModal">Détails des avis</a>
                 </p>
@@ -51,5 +52,52 @@
 
   </div>
   <!-- /.container -->
+   <!-- Modale des avis -->
+   <div class="modal fade" id="reviewsModal" tabindex="-1" role="dialog" aria-labelledby="reviewsModalLabel"
+   aria-hidden="true">
+   <div class="modal-dialog" role="document">
+     <div class="modal-content">
+       <div class="modal-header">
+         <h3 class="modal-title" id="reviewsModalLabel">Avis des internautes</h3>
+         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+           <span aria-hidden="true">&times;</span>
+         </button>
+       </div>
+       <div class="modal-body">
+
+         <% for(const review of reviews){ %>
+           <section>
+             <h5>
+               <%=review.title %> &nbsp;
+                 <small class="text-muted">
+                   <!-- 
+                     L'idée ici est de générer autant de caractère étoile pleine (9733) que la note en base de donnée.
+                     Si la note est de 3 / 5 on affiche 3 étoiles pleines et 2 étoiles vide (9733)
+                     Pour faire ça on créé une boulde qui compte de 1 à 5. Si notre compteur est inferieur ou égal à la note on affichei une étoile pleine sinon une étoile vide 
+                   -->
+                   <% for(let counter=1; counter <=5; counter ++){ %>
+                     <% if(counter <=review.note) { %>
+                       &#9733; 
+                     <%}else{%>
+                       &#9734; 
+                     <%}%>
+                   <%}%>
+                 </small>
+             </h5>
+             <p class="review-author">par <%=review.author%>
+             </p>
+             <p>
+               <%=review.message%>
+             </p>
+           </section>
+           <hr>
+           <%}%>
+       </div>
+       <div class="modal-footer">
+         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+       </div>
+     </div>
+   </div>
+ </div>
 
 <%- include('partials/footer') %>

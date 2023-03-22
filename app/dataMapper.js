@@ -19,6 +19,26 @@ const dataMapper = {
 
     },
 
+    getAllReview: async (id) => {
+        const requete = `SELECT * FROM review WHERE id= $1;`;
+        const result = await client.query(requete, [id]);
+        return result.rows;
+    },
+
+    getNumberForCategories: async () => {
+        const requete = `SELECT category, Count(name) FROM figurine GROUP BY category;`;
+
+        const result = await client.query(requete);
+        return result.rows;
+    },
+
+    getFigurineByCategory: async (categoryName) =>{
+        const requete = `SELECT * FROM figurine WHERE category = $1;`;
+        const result = await client.query(requete, [categoryName]);
+
+        return result.rows;
+    }
+
 }
 
 module.exports = dataMapper;

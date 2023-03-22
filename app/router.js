@@ -8,10 +8,13 @@ const bookmarksController = require('./controllers/bookmarksController');
 const router = express.Router();
 
 // page d'accueil
-router.get('/', mainController.homePage);
+router.get('/', mainController.leftMenu, mainController.homePage);
 
 // page article
-router.get('/article/:id', mainController.articlePage);
+router.get('/article/:id', mainController.leftMenu, mainController.articlePage);
+
+// page category
+router.get('/category/:categoryName', mainController.leftMenu, mainController.getCategoryPage);
 
 // page favoris
 router.get('/bookmarks', bookmarksController.bookmarksPage);
