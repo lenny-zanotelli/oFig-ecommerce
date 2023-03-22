@@ -1,0 +1,55 @@
+<%- include('partials/header') %>
+
+<div class="row">
+
+    <%- include('partials/leftMenu') %>
+
+
+      <div class="col-lg-9">
+
+        <div class="row">
+          <div class="col-lg-6">
+            <img class="" src="/images/<%= figurine.name.toLowerCase() %>.png" alt="">
+          </div>
+
+          <div class="col-lg-6">
+            <div class="card">
+              <div class="card-body">
+                <h3 class="card-title">
+                  <%= figurine.name %>
+                    <div class="badge badge-pill badge-<%= figurine.category.toLowerCase()%>">
+                      <%= figurine.category%>
+                    </div>
+                </h3>
+                <p class="card-text">Taille réelle : <%= figurine.size %>cm</p>
+                <p class="card-text">
+                  <%= figurine.description%>
+                </p>
+                <p class="card-text">3
+                  Note moyenne : &#9733; &#9733; &#9733; &#9733; &#9734;
+                  <br>
+                  <a href="#" data-toggle="modal" data-target="#reviewsModal">Détails des avis</a>
+                </p>
+                <h5>$<%=figurine.price%>
+                </h5>
+                <p class="card-text">
+                  <a href="#" class="link-add-bookmarks">+ Ajouter aux favoris</a>
+                </p>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+        <!-- /.row -->
+
+      </div>
+      <!-- /.col-lg-9 -->
+
+  </div>
+  <!-- /.row -->
+
+  </div>
+  <!-- /.container -->
+
+<%- include('partials/footer') %>
